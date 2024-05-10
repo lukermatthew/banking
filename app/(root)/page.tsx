@@ -2,12 +2,17 @@ import React from "react";
 import dynamic from "next/dynamic";
 
 import HeaderBox from "@/components/HeaderBox";
+import RightSidebar from "@/components/RightSidebar";
 const TotalBalanceBox = dynamic(() => import("@/components/TotalBalanceBox"), {
   ssr: false,
 });
 
 const HomePage = () => {
-  const loggedIn = { firstName: "Matmercer" };
+  const loggedIn = {
+    firstName: "Mat",
+    lastName: "Mercer",
+    email: "matmercer@gmail.com",
+  };
   return (
     <section className="home">
       <div className="home-content">
@@ -24,7 +29,14 @@ const HomePage = () => {
             totalCurrentBalance={1250.35}
           />
         </header>
+        RECENT TRANSACTIONS
       </div>
+
+      <RightSidebar
+        user={loggedIn}
+        transactions={[]}
+        banks={[{ currentBalance: 123.5 }, { currentBalance: 500.5 }]}
+      />
     </section>
   );
 };
